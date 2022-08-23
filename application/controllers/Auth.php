@@ -35,6 +35,7 @@ class Auth extends CI_Controller
           if ($password == $user->password) {
             $session = array(
               'authenticated' => true,
+              'id' => $user->id,
               'username' => $user->username,
               'nama' => $user->nama,
               'role' => $user->role,

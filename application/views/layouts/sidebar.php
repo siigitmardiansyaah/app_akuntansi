@@ -29,7 +29,7 @@
             <?php if ($this->session->userdata('role') == 'Admin'): ?>
 
             <li class="nav-item">
-                <a class="nav-link" href="<?php echo base_url()?>upload">
+                <a class="nav-link" href="<?php echo base_url()?>unggah">
                     <i class="fas fa-fw fa-upload"></i>
                     <span>Upload File Akun</span></a>
             </li>
@@ -113,12 +113,12 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $this->session->userdata('nama')?></span>
                                 <img class="img-profile rounded-circle"
-                                    src="<?php echo base_url()?>assets/profile/<?php echo $this->session->userdata('foto') ?>">
+                                    src="<?php echo base_url()?>upload/<?php echo $this->session->userdata('foto') ?>">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="<?php echo base_url()?>profile">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>

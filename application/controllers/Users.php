@@ -32,7 +32,7 @@ class Users extends CI_Controller {
             $row[] = $person->nama;
             $row[] = $person->role;
             if($person->foto)
-                $row[] = '<a href="'.base_url('upload/'.$person->foto).'" target="_blank"><img src="'.base_url('upload/'.$person->foto).'" class="img-responsive" /></a>';
+                $row[] = '<a href="'.base_url('upload/'.$person->foto).'" target="_blank"><img src="'.base_url('upload/'.$person->foto).'" class="img-responsive" width = "100" height="100" /></a>';
             else
                 $row[] = '(No photo)';
  
@@ -71,7 +71,7 @@ class Users extends CI_Controller {
         if(!empty($_FILES['photo']['name']))
         {
             $upload = $this->_do_upload();
-            $data['photo'] = $upload;
+            $data['foto'] = $upload;
         }
  
         $insert = $this->users_m->save($data);
@@ -92,7 +92,7 @@ class Users extends CI_Controller {
         {
             if(file_exists('upload/'.$this->input->post('remove_photo')) && $this->input->post('remove_photo'))
                 unlink('upload/'.$this->input->post('remove_photo'));
-            $data['photo'] = '';
+            $data['foto'] = '';
         }
  
         if(!empty($_FILES['photo']['name']))
@@ -104,7 +104,7 @@ class Users extends CI_Controller {
             if(file_exists('upload/'.$person->photo) && $person->photo)
                 unlink('upload/'.$person->photo);
  
-            $data['photo'] = $upload;
+            $data['foto'] = $upload;
         }
  
         $this->users_m->update(array('id' => $this->input->post('id')), $data);
