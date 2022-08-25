@@ -92,21 +92,15 @@ class Unggah extends CI_Controller
     $data['bulan'] = $bulan;
     $data['nama_file'] = $filename;
     $data['set'] = $set;
-    
-    foreach($data['sheet'] as $row) {
-        if (($row['B'] !== '' && $row['B'] !== null && $row['B'] !== 'Nama Akun' && $row['B'] !== 'TOTAL')) {
-        echo $row['B'].'<br/>';
-        echo $row['C'].'<br/>';
-        echo $row['H'].'<br/>';
-        }
-    }
+    // $nama_akun = $sheet->getActiveSheet()->getCell('A')->getOldCalculatedValue();
 
-    // $this->load->view('layouts/head', $data);
-    // $this->load->view('layouts/sidebar');
-    // $this->load->view('upload_tampil', $data);
-    // $this->load->view('layouts/js');
-    // $this->load->view('js/tampil_js', $data);
-    // $this->load->view('layouts/footer');
+
+    $this->load->view('layouts/head', $data);
+    $this->load->view('layouts/sidebar');
+    $this->load->view('upload_tampil', $data);
+    $this->load->view('layouts/js');
+    $this->load->view('js/tampil_js', $data);
+    $this->load->view('layouts/footer');
   }
 
   function data_tampil()
@@ -163,13 +157,13 @@ class Unggah extends CI_Controller
 
   // LOOPING DATA PUS DARI EXCEL
             foreach ($sheet as $row) {
-            if (($row['C'] !== '' && $row['C'] !== null) && ($row['H'] !== '' && $row['H'] !== null && $row['H'] !== ' - ' && $row['H'] != 0  || $row['I'] !== '' && $row['I'] !== null && $row['I'] != 0 && $row['I'] !== ' - '))
-            {
+              if (($row['A'] !== '' && $row['A'] !== null && $row['A'] !== 'Nama Akun' && $row['A'] !== 'TOTAL')) {
+                
 
-              $no_akun = $row['C'];
-              $nama_akun = $row['B'];
-              $kredit =  str_replace(",", "", $row['I']);
-              $debit = str_replace(",", "", $row['H']);
+              $no_akun = $row['B'];
+              $nama_akun = $row['A'];
+              $kredit =  str_replace(",", "", $row['H']);
+              $debit = str_replace(",", "", $row['G']);
               if($debit == null || $debit == '' || $debit == '-')
               {
                 $debit = 0;
@@ -212,7 +206,7 @@ class Unggah extends CI_Controller
             }
   // // NOTIF JIKA DATA BARANG KOSONG
            $array = array_unique($data, SORT_REGULAR);
-           $tempArr = array_unique(array_column($data, 'ITEM_CODE'));
+           $tempArr = array_unique(array_column($data, 'no_akun'));
            $new_karton_pus = array_intersect_key($data, $tempArr);
    
   // Insert Karton
@@ -233,11 +227,15 @@ class Unggah extends CI_Controller
                     $query = $this->upload_m->insert_do($new_karton);
                   }
                 }
+
+                // echo '<pre>';
+                // print_r($new_karton);
+                // echo '</pre>';
   // Insert Karto
               
             $this->session->set_flashdata('success', "Data berhasil di unggah");
               unlink("./excel/$filename");
-              redirect('pesanan');
+              redirect('akun');
   
   } 
 }

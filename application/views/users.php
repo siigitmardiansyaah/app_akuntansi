@@ -31,7 +31,7 @@
                             <span class="icon text-white-50">
                                 <i class="fas fa-plus"></i>
                             </span>
-                                <span class="text">Add Akun</span>
+                                <span class="text">Add User</span>
                         </button>
                     </div>
 					<br />

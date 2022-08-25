@@ -29,4 +29,11 @@ class Upload_m extends CI_Model
     }
   }
 
+  function insert_do($data)
+  {
+    $this->db->trans_start();
+    $this->db->insert("akun", $data);
+    $this->db->trans_complete();
+  }
+
 }

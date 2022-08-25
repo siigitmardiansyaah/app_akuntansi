@@ -65,7 +65,7 @@
           </div>
               <div class="form-group col-md-6">
                 <label for="inputCity">Periode Tahun</label>
-                <select name="bulan" id="bulan" class="form-control">
+                <select name="tahun" id="tahun" class="form-control">
                   <option value=""> Pilih Tahun </option>
                   <?php 
                     $now=date('Y');
@@ -97,7 +97,7 @@
   <?php
   if (isset($_POST['preview'])) { // Jika user menekan tombol Preview pada form 
       $nama_file = $this->input->post('nama_file');
-      $set = $this->input->post('set');
+      $set = $this->input->post('nama_sheet');
       $bulan = $this->input->post('bulan');
       $tahun = $this->input->post('tahun');
       echo "<form method='post' action='" . base_url("unggah/import/$nama_file/$set/$bulan/$tahun") . "' onsubmit='disableButtonImport()'>";
@@ -130,12 +130,12 @@
       $data = array();
       foreach ($sheet as $row) {
         // Ambil data pada excel sesuai Kolom
-        if (($row['B'] !== '' && $row['B'] !== null && $row['B'] !== 'Nama Akun' && $row['B'] !== 'TOTAL')) {
+        if (($row['A'] !== '' && $row['A'] !== null && $row['A'] !== 'Nama Akun' && $row['A'] !== 'TOTAL')) {
           array_push($data, array(
-            'no_akun' => $row['C'],
-            'nama_akun' => $row['B'],
-            'debit' =>  $row['H'],
-            'kredit' => $row['I'],
+            'no_akun' => $row['B'],
+            'nama_akun' => $row['A'],
+            'debit' =>  $row['G'],
+            'kredit' => $row['H'],
           ));
         }
       }
@@ -158,7 +158,13 @@
           }else{
             $debit = $k['debit'];
           }
-          $kredit = $k['kredit'];
+
+          if($k['kredit'] == null || $k['kredit'] == '') {
+            $kredit = 0;
+          }else{
+            $kredit = $k['kredit'];
+          }
+
           echo '<tr class = "text-center">';
           echo '<td>' . $no++ . '</td>';
           echo '<td>' . $no_akun . '</td>';

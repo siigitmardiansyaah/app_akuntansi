@@ -52,19 +52,9 @@
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-                    aria-expanded="true" aria-controls="collapseUtilities">
+                <a class="nav-link" href="<?php echo base_url()?>laporan">
                     <i class="fas fa-fw fa-book"></i>
-                    <span>Laporan</span>
-                </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Laporan</h6>
-                        <a class="collapse-item" href="<?php echo base_url()?>neraca">Laporan Neraca</a>
-                        <a class="collapse-item" href="<?php echo base_url()?>laba">Laporan Laba Rugi</a>
-                    </div>
-                </div>
+                    <span>Laporan</span></a>
             </li>
 
             <!-- Divider -->
