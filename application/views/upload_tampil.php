@@ -169,8 +169,8 @@
           echo '<td>' . $no++ . '</td>';
           echo '<td>' . $no_akun . '</td>';
           echo '<td>' . $nama_akun . '</td>';
-          echo '<td>' . $debit . '</td>';
-          echo '<td>' . $kredit . '</td>';
+          echo '<td>' . rupiah($debit) . '</td>';
+          echo '<td>' . rupiah($kredit) . '</td>';
           echo '</tr>';
         }
       }

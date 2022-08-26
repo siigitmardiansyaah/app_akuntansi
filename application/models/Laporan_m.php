@@ -9,10 +9,11 @@ class Laporan_m extends CI_Model
     parent::__construct();
   }
 
-  function getData($bulan,$tahun) {
+  function getData($bulan,$tahun,$field) {
+    $this->db->where('no_akun',$field);
     $this->db->where('bulan',$bulan);
     $this->db->where('tahun',$tahun);
     $query = $this->db->get('akun');
-    return $query->result();
+    return $query->row();
   }
 }

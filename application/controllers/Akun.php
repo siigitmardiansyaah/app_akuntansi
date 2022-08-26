@@ -34,8 +34,8 @@ class Akun extends CI_Controller
             $row[] = $no;
             $row[] = $customers->no_akun;
             $row[] = $customers->nama_akun;
-            $row[] = $customers->debit;
-            $row[] = $customers->kredit;
+            $row[] = rupiah($customers->debit);
+            $row[] = rupiah($customers->kredit);
             $row[] = $customers->bulan;
             $row[] = $customers->tahun;
             $row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_person('."'".$customers->id_akun."'".')"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
@@ -69,7 +69,7 @@ class Akun extends CI_Controller
                 'debit' => $this->input->post('debit'),
                 'kredit' => $this->input->post('kredit'),
                 'bulan' => $this->input->post('bulan1'),
-                'tahun' => $this->input->post('tahun'),
+                'tahun' => $this->input->post('tahun1'),
                 'dibuat_oleh' => $nama,
                 'tanggal_buat' => date('Y-m-d H:i:s'),
             );

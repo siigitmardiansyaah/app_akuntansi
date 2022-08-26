@@ -3,17 +3,12 @@
 	<!-- Page Heading -->
 	<div class="d-sm-flex align-items-center justify-content-between mb-4">
 		<h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-		<a
-			href="#"
-			class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
-			><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a
-		>
 	</div>
 
 	<!-- Content Row -->
 	<div class="row">
 		<!-- Earnings (Monthly) Card Example -->
-		<div class="col-xl-3 col-md-6 mb-4">
+		<div class="col-xl-4 col-md-6 mb-4">
 			<div class="card border-left-primary shadow h-100 py-2">
 				<div class="card-body">
 					<div class="row no-gutters align-items-center">
@@ -21,9 +16,42 @@
 							<div
 								class="text-xs font-weight-bold text-primary text-uppercase mb-1"
 							>
-								Earnings (Monthly)
+								Pendapatan Bulan Ini
 							</div>
-							<div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+							<div class="h5 mb-0 font-weight-bold text-gray-800"><?php
+							if($pendapatan1 == null) {
+								$pendapatan1 = 0;
+							}else{
+								$pendapatan1 = $pendapatan1->kredit;
+							}
+							if($pendapatan2 == null) {
+								$pendapatan2 = 0;
+							}else{
+								$pendapatan2 = $pendapatan2->kredit;
+							}
+							if($pendapatan3 == null) {
+								$pendapatan3 = 0;
+							}else{
+								$pendapatan3 = $pu3->kredit;
+							}
+							if($pendapatan4 == null) {
+								$pendapatan4 = 0;
+							}else{
+								$pendapatan4 = $pendapatan4->kredit;
+							}
+							if($pendapatan5 == null) {
+								$pendapatan5 = 0;
+							}else{
+								$pendapatan5 = $pendapatan5->kredit;
+							}
+							if($pendapatan6 == null) {
+								$pendapatan6 = 0;
+							}else{
+								$pendapatan6 = $pendapatan6->kredit;
+							}
+
+							echo rupiah($pendapatan1 + $pendapatan2 + $pendapatan3 + $pendapatan5 + $pendapatan4 + $pendapatan6);
+							?></div>
 						</div>
 						<div class="col-auto">
 							<i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -34,17 +62,60 @@
 		</div>
 
 		<!-- Earnings (Monthly) Card Example -->
-		<div class="col-xl-3 col-md-6 mb-4">
-			<div class="card border-left-success shadow h-100 py-2">
+		<div class="col-xl-4 col-md-6 mb-4">
+			<div class="card border-left-warning shadow h-100 py-2">
 				<div class="card-body">
 					<div class="row no-gutters align-items-center">
 						<div class="col mr-2">
 							<div
 								class="text-xs font-weight-bold text-success text-uppercase mb-1"
 							>
-								Earnings (Annual)
+								Total Hutang Bulan Ini
 							</div>
-							<div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
+							<div class="h5 mb-0 font-weight-bold text-gray-800"><?php
+							if($hutang_pajak == null) {
+								$hutang_pajak = 0;
+							}else{
+								$hutang_pajak = $hutang_pajak->kredit;
+							}
+							if($hutang_dansos == null) {
+								$hutang_dansos = 0;
+							}else{
+								$hutang_dansos = $hutang_dansos->kredit;
+							}
+							if($hutang_sejahtera == null) {
+								$hutang_sejahtera = 0;
+							}else{
+								$hutang_sejahtera = $hutang_sejahtera->kredit;
+							}
+							if($hutang_pajda == null) {
+								$hutang_pajda = 0;
+							}else{
+								$hutang_pajda = $hutang_pajda->kredit;
+							}
+							if($hutang_pendidikan == null) {
+								$hutang_pendidikan = 0;
+							}else{
+								$hutang_pendidikan = $hutang_pendidikan->kredit;
+							}
+							if($hutang_bagi == null) {
+								$hutang_bagi = 0;
+							}else{
+								$hutang_bagi = $hutang_bagi->kredit;
+							}
+							if($hutang_pengawas == null) {
+								$hutang_pengawas = 0;
+							}else{
+								$hutang_pengawas = $hutang_pengawas->kredit;
+							}
+							if($hutang_pembangunan == null) {
+								$hutang_pembangunan = 0;
+							}else{
+								$hutang_pembangunan = $hutang_pembangunan->kredit;
+							}
+
+							echo rupiah($hutang_bagi + $hutang_dansos + $hutang_pajak + $hutang_pajda + $hutang_pembangunan + $hutang_pembangunan + $hutang_pendidikan + $hutang_pengawas + $hutang_sejahtera);
+							?></div>
 						</div>
 						<div class="col-auto">
 							<i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -53,58 +124,36 @@
 				</div>
 			</div>
 		</div>
-
-		<!-- Earnings (Monthly) Card Example -->
-		<div class="col-xl-3 col-md-6 mb-4">
-			<div class="card border-left-info shadow h-100 py-2">
-				<div class="card-body">
-					<div class="row no-gutters align-items-center">
-						<div class="col mr-2">
-							<div
-								class="text-xs font-weight-bold text-info text-uppercase mb-1"
-							>
-								Tasks
-							</div>
-							<div class="row no-gutters align-items-center">
-								<div class="col-auto">
-									<div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
-										50%
-									</div>
-								</div>
-								<div class="col">
-									<div class="progress progress-sm mr-2">
-										<div
-											class="progress-bar bg-info"
-											role="progressbar"
-											style="width: 50%"
-											aria-valuenow="50"
-											aria-valuemin="0"
-											aria-valuemax="100"
-										></div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-auto">
-							<i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
 		<!-- Pending Requests Card Example -->
-		<div class="col-xl-3 col-md-6 mb-4">
-			<div class="card border-left-warning shadow h-100 py-2">
+		<div class="col-xl-4 col-md-6 mb-4">
+			<div class="card border-left-info shadow h-100 py-2">
 				<div class="card-body">
 					<div class="row no-gutters align-items-center">
 						<div class="col mr-2">
 							<div
 								class="text-xs font-weight-bold text-warning text-uppercase mb-1"
 							>
-								Pending Requests
+								Total Piutang Bulan Ini
 							</div>
-							<div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+							<div class="h5 mb-0 font-weight-bold text-gray-800"><?php
+							if($piutang_usaha == null) {
+								$piutang_usaha = 0;
+							}else{
+								$piutang_usaha = $piutang_usaha->debit;
+							}
+							if($piutang_barang == null) {
+								$piutang_barang = 0;
+							}else{
+								$piutang_barang = $piutang_barang->debit;
+							}
+							if($piutang_pinjaman == null) {
+								$piutang_pinjaman = 0;
+							}else{
+								$piutang_pinjaman = $piutang_pinjaman->debit;
+							}
+							echo rupiah($piutang_barang + $piutang_pinjaman + $piutang_usaha);
+							
+							?></div>
 						</div>
 						<div class="col-auto">
 							<i class="fas fa-comments fa-2x text-gray-300"></i>
@@ -117,99 +166,6 @@
 
 	<!-- Content Row -->
 
-	<div class="row">
-		<!-- Area Chart -->
-		<div class="col-xl-8 col-lg-7">
-			<div class="card shadow mb-4">
-				<!-- Card Header - Dropdown -->
-				<div
-					class="card-header py-3 d-flex flex-row align-items-center justify-content-between"
-				>
-					<h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
-					<div class="dropdown no-arrow">
-						<a
-							class="dropdown-toggle"
-							href="#"
-							role="button"
-							id="dropdownMenuLink"
-							data-toggle="dropdown"
-							aria-haspopup="true"
-							aria-expanded="false"
-						>
-							<i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-						</a>
-						<div
-							class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-							aria-labelledby="dropdownMenuLink"
-						>
-							<div class="dropdown-header">Dropdown Header:</div>
-							<a class="dropdown-item" href="#">Action</a>
-							<a class="dropdown-item" href="#">Another action</a>
-							<div class="dropdown-divider"></div>
-							<a class="dropdown-item" href="#">Something else here</a>
-						</div>
-					</div>
-				</div>
-				<!-- Card Body -->
-				<div class="card-body">
-					<div class="chart-area">
-						<canvas id="myAreaChart"></canvas>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<!-- Pie Chart -->
-		<div class="col-xl-4 col-lg-5">
-			<div class="card shadow mb-4">
-				<!-- Card Header - Dropdown -->
-				<div
-					class="card-header py-3 d-flex flex-row align-items-center justify-content-between"
-				>
-					<h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
-					<div class="dropdown no-arrow">
-						<a
-							class="dropdown-toggle"
-							href="#"
-							role="button"
-							id="dropdownMenuLink"
-							data-toggle="dropdown"
-							aria-haspopup="true"
-							aria-expanded="false"
-						>
-							<i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-						</a>
-						<div
-							class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-							aria-labelledby="dropdownMenuLink"
-						>
-							<div class="dropdown-header">Dropdown Header:</div>
-							<a class="dropdown-item" href="#">Action</a>
-							<a class="dropdown-item" href="#">Another action</a>
-							<div class="dropdown-divider"></div>
-							<a class="dropdown-item" href="#">Something else here</a>
-						</div>
-					</div>
-				</div>
-				<!-- Card Body -->
-				<div class="card-body">
-					<div class="chart-pie pt-4 pb-2">
-						<canvas id="myPieChart"></canvas>
-					</div>
-					<div class="mt-4 text-center small">
-						<span class="mr-2">
-							<i class="fas fa-circle text-primary"></i> Direct
-						</span>
-						<span class="mr-2">
-							<i class="fas fa-circle text-success"></i> Social
-						</span>
-						<span class="mr-2">
-							<i class="fas fa-circle text-info"></i> Referral
-						</span>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+	
 </div>
 <!-- /.container-fluid -->
